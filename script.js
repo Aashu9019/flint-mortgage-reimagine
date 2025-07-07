@@ -4,10 +4,12 @@ document.addEventListener('DOMContentLoaded', function() {
     // Mobile menu toggle
     const mobileMenuBtn = document.getElementById('mobile-menu-btn');
     const mobileMenu = document.getElementById('mobile-menu');
+    const closeMenuBtn = document.getElementById('close-menu');
     const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
     
     let isMobileMenuOpen = false;
     
+    // Open mobile menu
     mobileMenuBtn.addEventListener('click', function() {
         isMobileMenuOpen = !isMobileMenuOpen;
         
@@ -28,6 +30,16 @@ document.addEventListener('DOMContentLoaded', function() {
             document.body.style.overflow = '';
         }
     });
+    
+    // Close mobile menu with X button
+    if (closeMenuBtn) {
+        closeMenuBtn.addEventListener('click', function() {
+            isMobileMenuOpen = false;
+            mobileMenu.classList.remove('active');
+            mobileMenuBtn.classList.remove('active');
+            document.body.style.overflow = '';
+        });
+    }
     
     // Close mobile menu when clicking on nav links
     mobileNavLinks.forEach(link => {
